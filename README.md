@@ -3,7 +3,7 @@
 0. Download Ver_X.X and node_modules.zip. 
 1. Unzip node_modulea.zip file into Ver_X.X file.
 2. Install NPM package manager.
-3. Run npm init in cmd inside Ver_X.X file. 
+3. Run 'npm init' in cmd inside Ver_X.X file. 
 4. It should automatically install all necessary dependencies from Ver_X.X/package.json file. 
 5. If it didnt, here is list of current dependencies: 
   "dependencies": {
