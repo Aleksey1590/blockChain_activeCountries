@@ -12,22 +12,6 @@ var fs = require('fs');
 app.use('/', express.static('./public'));
 
 
-
-
-//API testing 
-// function getTXs (req, response) {
-// 	console.log("getTXs starts to work.  ");
-// 	console.log(" ");
-
-// 	fetchTx(function(body) {
-// 		var ip = body["txs"][0]["relayed_by"];
-// 		fetchGeoIp(ip, function(body) {
-// 			console.log(body);
-// 			response.send("done!");
-// 		})
-// 	});
-// }
-
 function startWebSocket(){
 	//Websocketing
 	//var bciSocket = new WebSocket("ws://echo.websocket.org/");
@@ -185,18 +169,14 @@ function showRating(jsonFile){
 		  console.log(jsonFile[i]['name'] + ' : ' + jsonFile[i]['counter']);
 	}
 }
-//showRating(countriesJSON);
 
-function myFunction() {
-    var table = document.getElementById("myTable");
-    var row = table.insertRow(0);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
-}
 
+
+//Start receiving online data from BCI
 //app.get('/getTX', startWebSocket);
+
+//See current rating
+//showRating(countriesJSON);
 //app.get('/getTX', showRating);
 
 
