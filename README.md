@@ -18,3 +18,10 @@
 6. Modify start.sh file and insert correct directory into <cd "correctPath"> line. 
 7. Execute start.sh.
 8. Open http://localhost:3000/ in your browser to see execution.
+
+
+
+Executing and testing Scripts
+1. To populate coutries JSON file, uncomment "app.get('/getTX', startWebSocket);" and execute start.sh. The script will start working and receive real-time data and populate the json file. 
+2. To see current statistics of countries, comment "app.get('/getTX', startWebSocket);" back and uncomment "showRating(countriesJSON);" and "app.get('/getTX', showRating);" and execute start.sh. The result should output in your terminal a sorted table of countries in descending order. 
+app.get('/getTX', showRating);
