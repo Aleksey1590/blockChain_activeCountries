@@ -1,0 +1,65 @@
+	<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="jquery-3.1.0.js"></script>
+  <script src="getAPI.js"></script> 
+  <script src="countries.json"></script>>
+
+</head>
+
+
+
+<body>
+
+  <p>Here we work with BlockChain API</p>
+  
+  
+
+
+<table id="myTable">
+  <tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</table>
+
+<button onclick="myFunction()">Try it</button>
+<script>
+	function myFunction() {
+	    var table = document.getElementById("myTable");
+	    var row = table.insertRow(0);
+	    var cell1 = row.insertCell(0);
+	    var cell2 = row.insertCell(1);
+	    cell1.innerHTML = "NEW CELL1";
+	    cell2.innerHTML = "NEW CELL2";
+}
+
+</script>
+
+<!-- <p>Current difficulty is - <span id='diff'></span></p> -->
+
+
+<p>Relaying IP is - <span id='relayIP'></span></p>
+
+<p>Country - <span id='country'></span></p>
+
+
+
+  <p>I hope your script was successful :) </p>
+
+
+
+
+</body>
+
+</html>
