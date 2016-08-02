@@ -176,8 +176,8 @@ function showRating(jsonFile){
 //app.get('/getTX', startWebSocket);
 
 //See current rating
-//showRating(countriesJSON);
-//app.get('/getTX', showRating);
+// showRating(countriesJSON);
+// app.get('/getTX', showRating);
 
 
 
