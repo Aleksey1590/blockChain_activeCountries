@@ -21,23 +21,18 @@ function startWebSocket(){
 	//var bciSocket = new WebSocket("ws://echo.websocket.org/");
 
 	var bciSocket = new WebSocket("wss://ws.blockchain.info/inv");
-	
-//	console.log("Websocket created successfully");
-
 
 	bciSocket.onopen = function() {
-		// console.log("Connected successfully");
-		// console.log("");
+
 		bciSocket.send('{"op": "unconfirmed_sub"}');
 	};
 
-
-
-
 	bciSocket.onmessage = function(event) {
+
+		//if (counter==5000){generateResults();}
+		
 		var msgJSON = JSON.parse(event.data);
 		var ip = msgJSON['x']['relayed_by'];
-		//console.log("Incoming IP Address: " + ip);
 
 		fetchGeoIp(ip, function(body) {
 
@@ -119,11 +114,8 @@ function startWebSocket(){
 					});
 					}
 		});
-
 }
 
-	
-		
 
 	bciSocket.onerror = function(error) {
 	  console.log("Error: " + error.message);
@@ -160,9 +152,7 @@ function handleTXsResponse (callback, error, response, body) {
 }
 
 
-function fetchGeoIp(ip, callback) {
-	//console.log("fetching geoip information for " + ip);
-	
+function fetchGeoIp(ip, callback) {	
 		//var sendReq = "http://ip-api.com/json/".concat(ip);
 		var sendReq = "http://freegeoip.net/json/".concat(ip);
 		request(sendReq, handleGeoReply.bind(null, callback));
@@ -172,7 +162,6 @@ function fetchGeoIp(ip, callback) {
 
 
 function handleGeoReply (callback, error, response, body){
-
   	if (error) {
 			callback(null, error)
 	} 
@@ -201,15 +190,11 @@ function handlePopReply(callback, error, response, body){
 	else if (response.statusCode == 200) {
 		var popReply = JSON.parse(body);
 		callback(popReply, null);
-
   	} 
   	else {
   		callback(null, "Something weird happened");
   	}
 }
-
-
-
 
 
 function updateCountryRating(country, popSize){
@@ -232,13 +217,9 @@ function updateAbsoluteRating(country, popSize){
 				countriesAbsolute[findCountry(country, true)].counter++;
 				countriesAbsolute[findCountry(country, true)].absoluteRating++;
 				countriesAbsolute[findCountry(country, true)].populationSize = popSize;
-				//countriesAbsolute[findCountry(country)].relativeRating = (countriesAbsolute[findCountry(country)].absoluteRating)/((popSize/1000000));
-				
-				
 				fs.writeFile('./public/countriesAbsolute.json', JSON.stringify(countriesAbsolute), function (err) {
 	  				if (err) return console.log("Error when updating Absolute file " + country + " : " +err);
 				});
-				
 				absoluteSort(countriesAbsolute);
 				return;
 		}
@@ -256,16 +237,12 @@ function updateRelativeRating(country, popSize){
 	}
 	else{
 				countriesRelative[findCountry(country, false)].counter++;
-				//countriesAbsolute[findCountry(country, false)].absoluteRating++;
 				countriesRelative[findCountry(country, false)].populationSize = popSize;
 				countriesRelative[findCountry(country, false)].relativeRating = (countriesRelative[findCountry(country, false)].counter)/((popSize/1000000));
-				
-				
 				fs.writeFile('./public/countriesRelative.json', JSON.stringify(countriesRelative), function (err) {
 	  				if (err) return console.log("Error when updating Relative file " + country + " : " +err);
 				});
 				
-				//absoluteSort(countriesRelative);
 				relativeSort(countriesRelative);
 				return;
 		}
@@ -357,21 +334,40 @@ function showTopResults(absolute){
 	console.log("Total Relative TXs - " + totalRelative);
 }
 
+function generateResults(){
+
+
+//Math.round(new Date().getTime()/1000)
+
+
+}
+
+
+
+
+
+function giveRandomText(request, response){
+			
+
+	var a = "Hello Wolrd";
+	response.send("Hello world");
+	
+}
 
 
 //Start receiving online data from BCI
-app.get('/getTX', startWebSocket);
+//app.get('/getTX', startWebSocket);
 
 //See ratings
-// console.log("Absolute Rating: ");
-// showTopResults(true);
-// console.log("");
-// console.log("____________________________________________________________");
-// console.log("");
-// console.log("Relative Rating: ");
-// showTopResults(false);
-// console.log("");
-
+console.log("Absolute Rating: ");
+showTopResults(true);
+console.log("");
+console.log("____________________________________________________________");
+console.log("");
+console.log("Relative Rating: ");
+showTopResults(false);
+console.log("");
+//app.get("/getTX", giveRandomText);
 
 
 
