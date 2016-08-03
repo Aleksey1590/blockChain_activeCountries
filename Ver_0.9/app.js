@@ -357,39 +357,21 @@ function showTopResults(absolute){
 	console.log("Total Relative TXs - " + totalRelative);
 }
 
-// function showAbsoluteRating(jsonFile){
-// 	console.log("");
-// 	console.log("Absolute rating: ");
-// 	console.log("");
-// 	for (let i = 0; i < jsonFile.length; i++) {
-// 		  console.log(jsonFile[i]['name'] + ' : ' + jsonFile[i]['absoluteRating']);
-// 	}
-// }
-
-// function showRelativeRating(jsonFile){
-// 	console.log("");
-// 	console.log("Relative to Population size rating: ");
-// 	console.log("");
-// 	for (let i = 0; i < jsonFile.length; i++) {
-// 		  console.log(jsonFile[i]['name'] + ' : ' + jsonFile[i]['relativeRating']);
-// 	}
-// }
-
 
 
 //Start receiving online data from BCI
-//app.get('/getTX', startWebSocket);
+app.get('/getTX', startWebSocket);
 
 //See ratings
-console.log("Absolute Rating: ");
-showTopResults(true);
-console.log("");
-console.log("____________________________________________________________");
-console.log("");
-console.log("Relative Rating: ");
-showTopResults(false);
-console.log("");
-//app.get('/getTX', showRating);
+// console.log("Absolute Rating: ");
+// showTopResults(true);
+// console.log("");
+// console.log("____________________________________________________________");
+// console.log("");
+// console.log("Relative Rating: ");
+// showTopResults(false);
+// console.log("");
+
 
 
 
